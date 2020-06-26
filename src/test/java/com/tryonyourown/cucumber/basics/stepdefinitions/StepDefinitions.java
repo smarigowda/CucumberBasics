@@ -1,10 +1,7 @@
 package com.tryonyourown.cucumber.basics.stepdefinitions;
 
 import io.cucumber.java.PendingException;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import io.cucumber.junit.Cucumber;
 import org.junit.runner.RunWith;
 
@@ -17,10 +14,10 @@ public class StepDefinitions {
         System.out.println("Running step: User is on home page");
     }
 
-    @When("^User logs into the application using username and password$")
-    public void user_logs_into_the_application_using_username_and_password() throws Throwable {
+    @When("^User logs into the application using username \"(.*)\" and password \"(.*)\"$")
+    public void user_logs_into_the_application_using_username_and_password(String username, String password) throws Throwable {
         // throw new PendingException();
-        System.out.println("Running step: User logs into the application using username and password");
+        System.out.println(String.format("Running step: User logs into the application using username = %s and password = %s", username, password));
     }
 
     @Then("^Home page is populated$")
@@ -34,5 +31,9 @@ public class StepDefinitions {
         // throw new PendingException();
         System.out.println("Running step: Cards are displayed");
     }
-
+    @But("^Cards are not displayed$")
+    public void cards_are_not_displayed() throws Throwable {
+        // throw new PendingException();
+        System.out.println("Running step: Cards are not displayed");
+    }
 }
